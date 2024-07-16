@@ -1,6 +1,7 @@
 import Services from "./class.services.js";
 import { hashearPass, verifyPassHasheada } from "../utils.js";
 import persistence from "../daos/persistence.js";
+import "dotenv/config";
 const { userDao } = persistence;
 
 export default class UserService extends Services {
@@ -39,7 +40,7 @@ export default class UserService extends Services {
     try {
       let userExist = "";
       const { email, password } = user;
-      if (email.toLowerCase() === "admincoder@coder.com" && password === "adminCod3r123") {
+      if (email.toLowerCase() === process.env.USERADMIN && password === process.env.KEYUSERADMIN) {
         userExist = {
           ...user,
           first_name: "Coderhouse",

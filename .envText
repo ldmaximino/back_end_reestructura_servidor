@@ -7,3 +7,5 @@ CLIENT_ID =
 CLIENT_SECRET = 
 CALLBACKURL = 'http://localhost:5002/users/login-github'
 TIMETOKEN = 2
+USERADMIN="admincoder@coder.com"
+KEYUSERADMIN="adminCod3r123"
