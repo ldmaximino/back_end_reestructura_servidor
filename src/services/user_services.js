@@ -1,22 +1,25 @@
+//Third party imports
+import "dotenv/config";
+
+//Local imports
 import Services from "./class.services.js";
 import { hashearPass, verifyPassHasheada } from "../utils.js";
 import persistence from "../daos/persistence.js";
-import "dotenv/config";
+
 const { userDao } = persistence;
 
 export default class UserService extends Services {
-
   constructor() {
     super(userDao);
   }
 
   async getUserByEmail(email) {
     try {
-      return await userDao.getUserByEmail(email);      
+      return await userDao.getUserByEmail(email);
     } catch (error) {
       throw new Error(error);
     }
-  };
+  }
 
   async register(user) {
     try {
@@ -34,19 +37,29 @@ export default class UserService extends Services {
     } catch (error) {
       throw new Error(error);
     }
-  };
+  }
 
   async login(user) {
     try {
       let userExist = "";
       const { email, password } = user;
-      if (email.toLowerCase() === process.env.USERADMIN && password === process.env.KEYUSERADMIN) {
-        userExist = {
-          ...user,
-          first_name: "Coderhouse",
-          last_name: "",
-          role: "admin",
-        };
+      if (
+        email.toLowerCase() === process.env.USERADMIN &&
+        password === process.env.KEYUSERADMIN
+      ) {
+        userExist = await userDao.getUserByEmail(email);
+        if (!userExist) {
+          userExist = await userDao.register({
+            ...user,
+            first_name: "Coderhouse",
+            last_name: "Academy",
+            role: "admin",
+            password: hashearPass(password),
+          });
+        } else {
+          const passValid = verifyPassHasheada(password, userExist.password);
+          if (!passValid) return null;
+        }
       } else {
         userExist = await userDao.getUserByEmail(email);
         if (!userExist) return null;
@@ -57,5 +70,5 @@ export default class UserService extends Services {
     } catch (error) {
       throw new Error(error);
     }
-  };
+  }
 }

@@ -1,5 +1,4 @@
 export default class Services {
-  
   constructor(dao) {
     this.dao = dao;
   }
@@ -18,7 +17,7 @@ export default class Services {
     } catch (error) {
       throw new Error(error);
     }
-  };
+  }
 
   async create(obj) {
     try {
@@ -26,7 +25,7 @@ export default class Services {
     } catch (error) {
       throw new Error(error);
     }
-  };
+  }
 
   async update(id, obj) {
     try {
@@ -34,7 +33,7 @@ export default class Services {
     } catch (error) {
       throw new Error(error);
     }
-  };
+  }
 
   async delete(id) {
     try {
@@ -42,5 +41,5 @@ export default class Services {
     } catch (error) {
       throw new Error(error);
     }
-  };
+  }
 }

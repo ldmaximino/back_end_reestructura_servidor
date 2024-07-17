@@ -1,8 +1,8 @@
+//Local imports
 import MongoDao from "./mongo_dao.js";
 import { UserModel } from "./models/user_model.js";
 
 export default class UserDaoMongo extends MongoDao {
-
   constructor() {
     super(UserModel);
   }

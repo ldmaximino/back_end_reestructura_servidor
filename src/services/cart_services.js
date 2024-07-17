@@ -1,9 +1,9 @@
+//Local imports
 import Services from "./class.services.js";
 import persistence from "../daos/persistence.js";
 const { cartDao } = persistence;
 
 export default class CartServices extends Services {
-
   constructor() {
     super(cartDao);
   }
@@ -13,7 +13,7 @@ export default class CartServices extends Services {
     } catch (error) {
       throw new Error(error);
     }
-  };
+  }
 
   async getCartById(cid) {
     try {
@@ -21,7 +21,7 @@ export default class CartServices extends Services {
     } catch (error) {
       throw new Error(error);
     }
-  };
+  }
 
   async createCart(object) {
     try {
@@ -29,7 +29,7 @@ export default class CartServices extends Services {
     } catch (error) {
       throw new Error(error);
     }
-  };
+  }
 
   async saveProductToCart(cid, pid) {
     try {
@@ -37,7 +37,7 @@ export default class CartServices extends Services {
     } catch (error) {
       throw new Error(error);
     }
-  };
+  }
 
   async updateCartWithProducts(cid, object) {
     try {
@@ -45,7 +45,7 @@ export default class CartServices extends Services {
     } catch (error) {
       throw new Error(error);
     }
-  };
+  }
 
   async updateProductQuantity(cid, pid, quantity) {
     try {
@@ -53,7 +53,7 @@ export default class CartServices extends Services {
     } catch (error) {
       throw new Error(error);
     }
-  };
+  }
 
   async deleteProductFromCart(cid, pid) {
     try {
@@ -61,7 +61,7 @@ export default class CartServices extends Services {
     } catch (error) {
       throw new Error(error);
     }
-  };
+  }
 
   async deleteAllProductsFromCart(cid) {
     try {
@@ -69,6 +69,5 @@ export default class CartServices extends Services {
     } catch (error) {
       throw new Error(error);
     }
-  };
+  }
 }
-

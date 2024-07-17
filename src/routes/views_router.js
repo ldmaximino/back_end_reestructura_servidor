@@ -1,9 +1,12 @@
+//Third party imports
 import { Router } from "express";
+import passport from "passport";
+
+//Local imports
 import ProductDaoMongoDB from "../daos/mongodb/product_dao.js";
 import CartDaoMongoDB from "../daos/mongodb/cart_dao.js";
-import UserService from '../services/user_services.js';
+import UserService from "../services/user_services.js";
 import { numberFormat } from "../utils.js";
-import passport from 'passport';
 
 const router = Router();
 
@@ -28,15 +31,15 @@ router.get("/login", (req, res) => {
 });
 
 //Github Login
-router.get("/login-github", async (req,res) => {
+router.get("/login-github", async (req, res) => {
   //Redirect to '/products' (View Products)
-  res.redirect('products');
+  res.redirect("products");
 });
 
 router.get("/logout", (req, res) => {
   req.logout((err) => {
-    if(err) res.send(err);
-    res.redirect('/login');
+    if (err) res.send(err);
+    res.redirect("/login");
   });
 });
 
@@ -57,25 +60,25 @@ router.get("/user_registered", (req, res) => {
 
 ////////////////////////////////// Views Products and Cart ///////////////////////////////
 //View Products
-router.get("/products",passport.authenticate('current'), async(req,res) => {
+router.get("/products", passport.authenticate("current"), async (req, res) => {
   let dataUser = {};
-  
+
   if (req.session.passport.user) {
     const user = await userService.getById(req.session.passport.user);
-    if(user) {
+    if (user) {
       dataUser = {
         first_name: user.first_name,
         last_name: user.last_name,
         role: user.role,
       };
-    };
+    }
   }
   let products = await productDao.getProducts();
   res.render("products", { products: products, dataUser });
 });
 
 //View One Cart
-  router.get("/cart/:cid", passport.authenticate('current'), async (req, res) => {
+router.get("/cart/:cid", passport.authenticate("current"), async (req, res) => {
   const { cid } = req.params;
   let cartDetail = await cartDao.getCartById(cid);
   const products = cartDetail.products.map((obj) => {

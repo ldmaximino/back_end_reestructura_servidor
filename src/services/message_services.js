@@ -1,4 +1,6 @@
+//Local imports
 import MessageDaoMongoDB from "../daos/mongodb/message_dao.js";
+
 const messageDao = new MessageDaoMongoDB();
 
 export const getAllMessages = async () => {

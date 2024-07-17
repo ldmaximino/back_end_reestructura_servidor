@@ -1,13 +1,16 @@
+//Third party imports
+import "dotenv/config";
+
+//Local imports
 import Controllers from "./class.controller.js";
 import ProductService from "../services/product_services.js";
+
 const productService = new ProductService();
-import "dotenv/config";
 
 //PORT definition
 const PORT = process.env.PORT || 5003;
 
 export default class ProductController extends Controllers {
-
   constructor() {
     super(productService);
   }
@@ -44,5 +47,5 @@ export default class ProductController extends Controllers {
     } catch (error) {
       next(error);
     }
-  };
+  }
 }

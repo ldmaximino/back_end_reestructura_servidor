@@ -1,6 +1,9 @@
-import UserService from "../services/user_services.js";
+//Third party imports
 import passport from "passport";
 import { Strategy as LocalStrategy } from "passport-local";
+
+//Local imports
+import UserService from "../services/user_services.js";
 
 const userService = new UserService();
 

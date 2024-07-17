@@ -1,8 +1,8 @@
+//Local imports
 import MongoDao from "./mongo_dao.js";
 import { ProductModel } from "./models/product_model.js";
 
 export default class ProductDaoMongoDB extends MongoDao {
-  
   constructor() {
     super(ProductModel);
   }
@@ -36,7 +36,7 @@ export default class ProductDaoMongoDB extends MongoDao {
       throw new Error(error);
     }
   }
-  
+
   async getProductByCode(code) {
     try {
       const product = await ProductModel.findOne({ code });

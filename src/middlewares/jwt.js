@@ -1,3 +1,4 @@
+//Third party imports
 import jwt from "jsonwebtoken";
 import "dotenv/config";
 
@@ -10,4 +11,3 @@ export const generateToken = (user, time = `${process.env.TIMETOKEN}m`) => {
     expiresIn: time,
   });
 };
-

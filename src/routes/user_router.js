@@ -24,7 +24,8 @@ router.get(
   passport.authenticate("github", { scope: ["user: email"] })
 );
 
-router.get("/login-github",
+router.get(
+  "/login-github",
   passport.authenticate("github", {
     failureRedirect: "/login",
     successRedirect: "/login-github",
