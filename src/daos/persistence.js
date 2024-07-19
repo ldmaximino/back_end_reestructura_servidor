@@ -4,7 +4,7 @@ import ProductDaoFS from './filesystem/product_dao.js';
 import CartDaoMongoDB from './mongodb/cart_dao.js';
 import CartDaoFS from './filesystem/cart_dao.js';
 import UserDaoMongoDB from './mongodb/user_dao.js';
-import { PERSISTENCE } from '../config.js';
+import { PERSISTENCE } from '../config/config.js';
 import { initMongoDB } from '../db/connection.js';
 
 let productDao = null;

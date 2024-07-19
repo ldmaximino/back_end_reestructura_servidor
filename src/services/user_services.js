@@ -1,7 +1,7 @@
 //Local imports
 import Services from "./class.services.js";
 import { hashearPass, verifyPassHasheada } from "../utils.js";
-import { USERADMIN, KEYUSERADMIN } from '../config.js';
+import { USERADMIN, KEYUSERADMIN } from '../config/config.js';
 
 import persistence from "../daos/persistence.js";
 

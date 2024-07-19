@@ -1,6 +1,6 @@
 //Third party imports
 import jwt from "jsonwebtoken";
-import { TIMETOKEN, SECRET_KEY } from '../config.js';
+import { TIMETOKEN, SECRET_KEY } from '../config/config.js';
 
 export const generateToken = (user, time = `${TIMETOKEN}m`) => {
   const payload = {

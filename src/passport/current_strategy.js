@@ -4,7 +4,7 @@ import { ExtractJwt, Strategy as jwtStrategy } from "passport-jwt";
 
 //Local imports
 import UserService from "../services/user_services.js";
-import { SECRET_KEY } from '../config.js';
+import { SECRET_KEY } from '../config/config.js';
 
 const userService = new UserService();
 

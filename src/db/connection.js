@@ -1,6 +1,6 @@
 //Third party imports
 import mongoose from "mongoose";
-import { URI_MONGODB, URI_MONGODB_LOCAL } from '../config.js';
+import { URI_MONGODB, URI_MONGODB_LOCAL } from '../config/config.js';
 
 export const initMongoDB = async () => {
   try {

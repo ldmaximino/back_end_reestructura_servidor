@@ -9,7 +9,7 @@ import MongoStore from "connect-mongo";
 import { errorHandler } from "./middlewares/error_handler.js";
 import { __dirname } from "./utils.js";
 import { initSocketServer } from "./socket_server.js";
-import { PORT, URI_MONGODB, SECRET_KEY } from './config.js';
+import { PORT, URI_MONGODB, SECRET_KEY } from './config/config.js';
 import passport from 'passport';
 import './passport/local_strategy.js';
 import './passport/github_strategy.js';

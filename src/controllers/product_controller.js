@@ -1,7 +1,7 @@
 //Local imports
 import Controllers from "./class.controller.js";
 import ProductService from "../services/product_services.js";
-import { PORT } from '../config.js';
+import { PORT } from '../config/config.js';
 
 const productService = new ProductService();
 

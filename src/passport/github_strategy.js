@@ -4,7 +4,7 @@ import { Strategy as GithubStrategy } from "passport-github2";
 
 //Local imports
 import UserService from "../services/user_services.js";
-import { CLIENT_ID, CLIENT_SECRET, CALLBACKURL } from '../config.js';
+import { CLIENT_ID, CLIENT_SECRET, CALLBACKURL } from '../config/config.js';
 
 const userService = new UserService();
 
