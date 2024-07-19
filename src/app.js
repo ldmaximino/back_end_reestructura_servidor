@@ -1,6 +1,5 @@
 //Third party imports
 import express from "express";
-import "dotenv/config";
 import handlebars from "express-handlebars";
 import cookieParser from "cookie-parser";
 import session from "express-session";
@@ -10,6 +9,7 @@ import MongoStore from "connect-mongo";
 import { errorHandler } from "./middlewares/error_handler.js";
 import { __dirname } from "./utils.js";
 import { initSocketServer } from "./socket_server.js";
+import { PORT, URI_MONGODB, SECRET_KEY } from './config.js';
 import passport from 'passport';
 import './passport/local_strategy.js';
 import './passport/github_strategy.js';
@@ -17,19 +17,16 @@ import './passport/current_strategy.js';
 import MainRouter from './routes/index_router.js';
 const mainRouter = new MainRouter();
 
-//PORT definition
-const PORT = process.env.PORT || 5003;
-
 //Store Config definition
 const storeConfig = {
   store: MongoStore.create({
-    mongoUrl: process.env.URI_MONGODB,
-    crypto: { secret: process.env.SECRET_KEY },
+    mongoUrl: URI_MONGODB,
+    crypto: { secret: SECRET_KEY },
     ttl: 180,
     autoRemove: "interval",
     autoRemoveInterval: 5, //delete expired sessions in mongodb every 5 minutes
   }),
-  secret: process.env.SECRET_KEY,
+  secret: SECRET_KEY,
   resave: true,
   saveUninitialized: true,
   cookie: { maxAge: 180000 },

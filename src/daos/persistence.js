@@ -1,19 +1,17 @@
-//Third party imports
-import "dotenv/config";
-
 //Local imports
-import ProductDaoMongoDB from "./mongodb/product_dao.js";
-import ProductDaoFS from "./filesystem/product_dao.js";
-import CartDaoMongoDB from "./mongodb/cart_dao.js";
-import CartDaoFS from "./filesystem/cart_dao.js";
-import UserDaoMongoDB from "./mongodb/user_dao.js";
-import { initMongoDB } from "../db/connection.js";
+import ProductDaoMongoDB from './mongodb/product_dao.js';
+import ProductDaoFS from './filesystem/product_dao.js';
+import CartDaoMongoDB from './mongodb/cart_dao.js';
+import CartDaoFS from './filesystem/cart_dao.js';
+import UserDaoMongoDB from './mongodb/user_dao.js';
+import { PERSISTENCE } from '../config.js';
+import { initMongoDB } from '../db/connection.js';
 
 let productDao = null;
 let userDao = null;
 let cartDao = null;
 
-let persistence = process.env.PERSISTENCE;
+let persistence = PERSISTENCE;
 
 switch (persistence) {
   case "fs":

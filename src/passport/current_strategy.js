@@ -1,10 +1,10 @@
 //Third party imports
 import passport from "passport";
 import { ExtractJwt, Strategy as jwtStrategy } from "passport-jwt";
-import "dotenv/config";
 
 //Local imports
 import UserService from "../services/user_services.js";
+import { SECRET_KEY } from '../config.js';
 
 const userService = new UserService();
 
@@ -20,7 +20,7 @@ const cookieExtractor = (req) => {
 
 const strategyConfig = {
   jwtFromRequest: ExtractJwt.fromExtractors([cookieExtractor]),
-  secretOrKey: process.env.SECRET_KEY,
+  secretOrKey: SECRET_KEY,
 };
 
 passport.use("current", new jwtStrategy(strategyConfig, verifyToken));

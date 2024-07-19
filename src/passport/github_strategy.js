@@ -1,17 +1,17 @@
 //Third party imports
 import passport from "passport";
 import { Strategy as GithubStrategy } from "passport-github2";
-import "dotenv/config";
 
 //Local imports
 import UserService from "../services/user_services.js";
+import { CLIENT_ID, CLIENT_SECRET, CALLBACKURL } from '../config.js';
 
 const userService = new UserService();
 
 const strategyConfig = {
-  clientID: process.env.CLIENT_ID,
-  clientSecret: process.env.CLIENT_SECRET,
-  callbackURL: process.env.CALLBACKURL,
+  clientID: CLIENT_ID,
+  clientSecret: CLIENT_SECRET,
+  callbackURL: CALLBACKURL,
 };
 
 export const registerOrLogin = async (

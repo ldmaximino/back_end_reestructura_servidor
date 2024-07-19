@@ -1,9 +1,8 @@
-//Third party imports
-import "dotenv/config";
-
 //Local imports
 import Services from "./class.services.js";
 import { hashearPass, verifyPassHasheada } from "../utils.js";
+import { USERADMIN, KEYUSERADMIN } from '../config.js';
+
 import persistence from "../daos/persistence.js";
 
 const { userDao } = persistence;
@@ -44,8 +43,8 @@ export default class UserService extends Services {
       let userExist = "";
       const { email, password } = user;
       if (
-        email.toLowerCase() === process.env.USERADMIN &&
-        password === process.env.KEYUSERADMIN
+        email.toLowerCase() === USERADMIN &&
+        password === KEYUSERADMIN
       ) {
         userExist = await userDao.getUserByEmail(email);
         if (!userExist) {
